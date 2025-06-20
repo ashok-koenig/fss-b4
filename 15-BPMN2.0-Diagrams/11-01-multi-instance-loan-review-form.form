@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "text": "# Multi-Step Loan Review",
+      "type": "text",
+      "layout": {
+        "row": "Row_0druphm",
+        "columns": null
+      },
+      "id": "Field_01f9k0q"
+    },
+    {
+      "label": "Reviewer",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dh90bv",
+        "columns": null
+      },
+      "id": "Field_11muc8a",
+      "key": "reviewer",
+      "readonly": "on"
+    },
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0qu1etq",
+        "columns": null
+      },
+      "id": "Field_1o65aoy",
+      "key": "applicant_name",
+      "readonly": "on"
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_065z4n4",
+        "columns": null
+      },
+      "id": "Field_08enqmr",
+      "key": "credit_score",
+      "readonly": "on"
+    },
+    {
+      "label": "Loan amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0gy2q38",
+        "columns": null
+      },
+      "id": "Field_15j862t",
+      "key": "loan_amount",
+      "readonly": "on"
+    },
+    {
+      "label": "Loan application is reviewed and approved",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0441o1o",
+        "columns": null
+      },
+      "id": "Field_0iozj09",
+      "key": "approved"
+    }
+  ],
+  "type": "default",
+  "id": "B4-11-01-multi-instance-loan-review-form",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

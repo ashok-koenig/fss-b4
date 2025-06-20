@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0g4ni69" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="B8-08-loan-approval-process-with-call-activity" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start loan approval process">
+      <bpmn:outgoing>Flow_04yxvq2</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_04yxvq2" sourceRef="StartEvent_1" targetRef="Activity_0v2ogin" />
+    <bpmn:userTask id="Activity_0v2ogin" name="Manual loan application entry">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="B4-08-01-loan-application-entry-with-loan-type" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_04yxvq2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0az4e4q</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_1nm953s">
+      <bpmn:incoming>Flow_0az4e4q</bpmn:incoming>
+      <bpmn:outgoing>Flow_021ze4o</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1lguuxe</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1i8f7bd</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0az4e4q" sourceRef="Activity_0v2ogin" targetRef="Gateway_1nm953s" />
+    <bpmn:sequenceFlow id="Flow_021ze4o" name="Personal loan" sourceRef="Gateway_1nm953s" targetRef="Activity_0swamg5">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type="person"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:callActivity id="Activity_0swamg5" name="Personal loan process">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B4-08-02-personal-loan-approval-sub-process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_021ze4o</bpmn:incoming>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1lguuxe" name="Home loan" sourceRef="Gateway_1nm953s" targetRef="Activity_1y23xof">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type="home"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:callActivity id="Activity_1y23xof" name="Home loan process">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B4-08-03-home-loan-approval-sub-process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1lguuxe</bpmn:incoming>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1i8f7bd" name="Car loan" sourceRef="Gateway_1nm953s" targetRef="Activity_1nvanjh">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type="car"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:callActivity id="Activity_1nvanjh" name="Car loan process">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B4-08-04-car-loan-approval-sub-process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1i8f7bd</bpmn:incoming>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="B8-08-loan-approval-process-with-call-activity">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="285" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dhtage_di" bpmnElement="Activity_0v2ogin">
+        <dc:Bounds x="270" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1nm953s_di" bpmnElement="Gateway_1nm953s" isMarkerVisible="true">
+        <dc:Bounds x="425" y="235" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_155rs8s_di" bpmnElement="Activity_1y23xof">
+        <dc:Bounds x="610" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1syn9gq_di" bpmnElement="Activity_1nvanjh">
+        <dc:Bounds x="610" y="390" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0b16wgl_di" bpmnElement="Activity_0swamg5">
+        <dc:Bounds x="610" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_04yxvq2_di" bpmnElement="Flow_04yxvq2">
+        <di:waypoint x="218" y="260" />
+        <di:waypoint x="270" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0az4e4q_di" bpmnElement="Flow_0az4e4q">
+        <di:waypoint x="370" y="260" />
+        <di:waypoint x="425" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_021ze4o_di" bpmnElement="Flow_021ze4o">
+        <di:waypoint x="450" y="235" />
+        <di:waypoint x="450" y="120" />
+        <di:waypoint x="610" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="497" y="102" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lguuxe_di" bpmnElement="Flow_1lguuxe">
+        <di:waypoint x="475" y="260" />
+        <di:waypoint x="610" y="260" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="500" y="233" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i8f7bd_di" bpmnElement="Flow_1i8f7bd">
+        <di:waypoint x="450" y="285" />
+        <di:waypoint x="450" y="430" />
+        <di:waypoint x="610" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="499" y="403" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,65 @@
+{
+  "components": [
+    {
+      "text": "# Loan Application Review Form",
+      "type": "text",
+      "layout": {
+        "row": "Row_1m2tpqr",
+        "columns": null
+      },
+      "id": "Field_1j60lji"
+    },
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0y21zhk",
+        "columns": null
+      },
+      "id": "Field_1affxmn",
+      "key": "applicant_name",
+      "readonly": "on"
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_1fb9ybu",
+        "columns": null
+      },
+      "id": "Field_0vokys7",
+      "key": "credit_score",
+      "readonly": "on"
+    },
+    {
+      "label": "Loan Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0pn9og9",
+        "columns": null
+      },
+      "id": "Field_06hbgox",
+      "key": "loan_amount",
+      "readonly": "on"
+    },
+    {
+      "label": "Loan Application reviewed and approved",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1ggypgp",
+        "columns": null
+      },
+      "id": "Field_1kgmee0",
+      "key": "approved"
+    }
+  ],
+  "type": "default",
+  "id": "B4-13-01-loan-manual-review-form",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

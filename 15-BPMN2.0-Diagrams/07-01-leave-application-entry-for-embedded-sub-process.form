@@ -1,0 +1,116 @@
+{
+  "components": [
+    {
+      "text": "# Employee Leave application Entry Form",
+      "type": "text",
+      "layout": {
+        "row": "Row_1t5rwtz",
+        "columns": null
+      },
+      "id": "Field_0mkrjjv"
+    },
+    {
+      "label": "Employee Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0k9hg3n",
+        "columns": null
+      },
+      "id": "Field_03tumby",
+      "key": "employee_name",
+      "validate": {
+        "required": true,
+        "minLength": "2"
+      }
+    },
+    {
+      "label": "Select department",
+      "values": [
+        {
+          "label": "Tech team",
+          "value": "tech"
+        },
+        {
+          "label": "HR",
+          "value": "hr"
+        },
+        {
+          "label": "Admin",
+          "value": "admin"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1whqunt",
+        "columns": null
+      },
+      "id": "Field_1elc8m1",
+      "key": "department",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Select leave type",
+      "values": [
+        {
+          "label": "Casual Leave",
+          "value": "casual"
+        },
+        {
+          "label": "Sick Leave",
+          "value": "sick"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_15qo9x6",
+        "columns": null
+      },
+      "id": "Field_1m0rgyr",
+      "key": "leave_type",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Leave start date",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0me2n7k",
+        "columns": null
+      },
+      "id": "Field_1khhqdk",
+      "key": "leave_start_date",
+      "validate": {
+        "required": true
+      },
+      "disallowPassedDates": true
+    },
+    {
+      "label": "Number of days",
+      "type": "number",
+      "layout": {
+        "row": "Row_0hgelgz",
+        "columns": null
+      },
+      "id": "Field_1kn09tl",
+      "key": "leave_days",
+      "validate": {
+        "required": true,
+        "min": "=1",
+        "max": "10"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "B4-07-01-leave-application-entry-form",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}
